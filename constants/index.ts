@@ -1,9 +1,9 @@
 import { Contact, Home, ListVideo } from 'lucide-react'
 
 export const navLinks = [
-	{ route: '', name: 'Home', icon: Home },
-	{ route: 'courses', name: 'Courses', icon: ListVideo },
-	{ route: 'contact', name: 'Contact', icon: Contact },
+	{ route: '', name: 'navLink1', icon: Home },
+	{ route: 'courses', name: 'navLink2', icon: ListVideo },
+	{ route: 'contact', name: 'navLink4', icon: Contact },
 ]
 
 export const lngs = [
