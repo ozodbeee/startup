@@ -17,6 +17,7 @@ export default authMiddleware({
 		'/:lng/contacts',
 		'/en/instructor/settings(.*)',
 	],
+	ignoredRoutes: ['/en/api/webhook'],
 })
 
 export const config = {
