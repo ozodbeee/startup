@@ -11,6 +11,7 @@ import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
 import { Avatar, AvatarImage } from '../ui/avatar'
 import Link from 'next/link'
 import useTranslate from '@/hooks/use-translate'
+import { Separator } from '../ui/separator'
 
 function UserBox() {
 	const { user } = useUser()
@@ -30,10 +31,6 @@ function UserBox() {
 				forceMount
 			>
 				<div className='flex flex-col space-y-4 p-2'>
-					<p className='text-xs font-medium leading-none text-muted-foreground'>
-						{user?.emailAddresses[0].emailAddress}
-					</p>
-
 					<div className='flex items-center gap-x-2'>
 						<div className='rounded-md bg-secondary p-1'>
 							<Avatar className='size-8'>
@@ -44,6 +41,9 @@ function UserBox() {
 						<div className='space-y-1'>
 							<p className='line-clamp-1 font-SpaceGrotesk text-sm'>
 								{user?.fullName}
+							</p>
+							<p className='text-xs font-medium leading-none text-muted-foreground'>
+								{user?.emailAddresses[0].emailAddress}
 							</p>
 						</div>
 					</div>
@@ -60,6 +60,7 @@ function UserBox() {
 						{t('manageAccount')}
 					</DropdownMenuItem>
 				</Link>
+				<Separator className='my-1' />
 				<DropdownMenuItem
 					asChild
 					className='w-full cursor-pointer text-muted-foreground'
