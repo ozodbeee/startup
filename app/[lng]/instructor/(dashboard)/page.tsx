@@ -3,9 +3,7 @@ import Header from '../_components/header'
 import { MonitorPlay } from 'lucide-react'
 import { PiStudent } from 'react-icons/pi'
 import { GrMoney } from 'react-icons/gr'
-import { courses } from '@/constants'
 import ReviewCard from '@/components/cards/review.card'
-import InstructorCourseCard from '@/components/cards/instructor-course.card'
 
 function Page() {
 	return (
