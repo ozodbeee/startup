@@ -22,7 +22,10 @@ export const getCourses = async (clerkId: string) => {
 	try {
 		await connectToDatabase()
 		const user = await User.findOne({ clerkId })
-		const courses = await Course.find({ instructor: user._id })
+		const courses = await Course.find({ instructor: user._id }).populate({
+			path: 'instructor',
+			model: User,
+		})
 		return courses as ICourse[]
 	} catch (error) {
 		throw new Error('Something went wrong while getting courses!')
