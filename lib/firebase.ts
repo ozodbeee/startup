@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getStorage, ref } from 'firebase/storage'
-import { v4 as uuidv4 } from 'uuid'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyBClrd5oTCYOPjlrasYI7LMBj_ZV9VYX5E',
@@ -14,6 +13,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const storage = getStorage(app)
 
-const courseStorageRefs = ref(storage, `/startup/course/${uuidv4()}`)
-
-export { storage, courseStorageRefs }
+export { storage }
