@@ -14,6 +14,7 @@ const CourseSchema = new Schema(
 		previewImage: String,
 		published: { type: Boolean, default: false },
 		instructor: { type: Schema.Types.ObjectId, ref: 'User' },
+		purchases: [{ type: Schema.Types.ObjectId, ref: 'Purchase' }],
 		slug: String,
 		tags: String,
 	},
