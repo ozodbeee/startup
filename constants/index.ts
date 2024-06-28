@@ -1,4 +1,13 @@
-import { Contact, FileCode, GaugeCircle, Home, ListVideo, MessageSquareMore, MonitorPlay, Settings2 } from 'lucide-react'
+import {
+	Contact,
+	FileCode,
+	GaugeCircle,
+	Home,
+	ListVideo,
+	MessageSquareMore,
+	MonitorPlay,
+	Settings2,
+} from 'lucide-react'
 import {
 	DiCisco,
 	DiCreativecommonsBadge,
@@ -46,9 +55,9 @@ export const companies = [
 
 export const filterCourses = [
 	{ label: 'cateogry1', name: 'all' },
-	{ label: 'cateogry2', name: 'trending' },
-	{ label: 'cateogry3', name: 'popular' },
-	{ label: 'cateogry4', name: 'featured' },
+	{ label: 'cateogry2', name: 'newest' },
+	{ label: 'cateogry3', name: 'lowest-price' },
+	{ label: 'cateogry4', name: 'highest-price' },
 ]
 
 export const filterLevels = [
