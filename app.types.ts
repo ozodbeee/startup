@@ -21,8 +21,8 @@ export interface ICourse {
 }
 
 export interface ISection {
-	title: string
 	_id: string
+	title: string
 	position: number
 	course: string
 	lessons: ILesson[]
@@ -40,6 +40,13 @@ export interface ILesson {
 		minutes: number
 		seconds: number
 	}
+	userProgress: IUserProgress[]
+}
+
+export interface IUserProgress {
+	userId: string
+	lessonId: string
+	isCompleted: string
 }
 
 export interface IUser {
