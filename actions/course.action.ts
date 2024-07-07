@@ -6,6 +6,7 @@ import { GetAllCoursesParams, GetCoursesParams, ICreateCourse } from './types'
 import { ICourse, ILesson } from '@/app.types'
 import { revalidatePath } from 'next/cache'
 import User from '@/database/user.model'
+import { cache } from 'react'
 import Section from '@/database/section.model'
 import Lesson from '@/database/lesson.model'
 import { calculateTotalDuration } from '@/lib/utils'
@@ -20,14 +21,14 @@ export const createCourse = async (data: ICreateCourse, clerkId: string) => {
 		await Course.create({ ...data, instructor: user._id })
 		revalidatePath('/en/instructor/my-courses')
 	} catch (error) {
-		throw new Error('Something went wrong while creating course')
+		throw new Error('Soething went wrong while creating course!')
 	}
 }
 
 export const getCourses = async (params: GetCoursesParams) => {
 	try {
 		await connectToDatabase()
-		const { clerkId, page = 1, pageSize = 6 } = params
+		const { clerkId, page = 1, pageSize = 3 } = params
 
 		const skipAmount = (page - 1) * pageSize
 
@@ -37,25 +38,22 @@ export const getCourses = async (params: GetCoursesParams) => {
 			.skip(skipAmount)
 			.limit(pageSize)
 
-		const totalCourses = await Course.find({
-			instructor: _id,
-		}).countDocuments()
-
+		const totalCourses = await Course.find({ instructor: _id }).countDocuments()
 		const isNext = totalCourses > skipAmount + courses.length
 
 		return { courses, isNext, totalCourses }
 	} catch (error) {
-		throw new Error('Something went wrong while getting courses!')
+		throw new Error('Soething went wrong while getting course!')
 	}
 }
 
-export const getCoursesById = async (id: string) => {
+export const getCourseById = async (id: string) => {
 	try {
 		await connectToDatabase()
 		const course = await Course.findById(id)
 		return course as ICourse
 	} catch (error) {
-		throw new Error('Something went wrong while getting courses!')
+		throw new Error('Soething went wrong while getting course!')
 	}
 }
 
@@ -69,7 +67,7 @@ export const updateCourse = async (
 		await Course.findByIdAndUpdate(id, updateData)
 		revalidatePath(path)
 	} catch (error) {
-		throw new Error('Something went wrong while getting courses!')
+		throw new Error('Something went wrong while updating course status!')
 	}
 }
 
@@ -83,13 +81,13 @@ export const deleteCourse = async (id: string, path: string) => {
 	}
 }
 
-export const getFeaturedCourse = async () => {
+export const getFeaturedCourses = cache(async () => {
 	try {
 		await connectToDatabase()
 		const courses = await Course.find({ published: true })
 			.limit(6)
 			.sort({ createdAt: -1 })
-			.select('previewImage title slug _id oldPrice currentPrice instructor')
+			.select('previewImage title slug oldPrice currentPrice instructor')
 			.populate({
 				path: 'instructor',
 				select: 'fullName picture',
@@ -100,9 +98,9 @@ export const getFeaturedCourse = async () => {
 	} catch (error) {
 		throw new Error('Something went wrong while getting featured courses!')
 	}
-}
+})
 
-export const getDetailedCourse = async (id: string) => {
+export const getDetailedCourse = cache(async (id: string) => {
 	try {
 		await connectToDatabase()
 
@@ -136,7 +134,7 @@ export const getDetailedCourse = async (id: string) => {
 	} catch (error) {
 		throw new Error('Something went wrong while getting detailed course!')
 	}
-}
+})
 
 export const getAllCourses = async (params: GetAllCoursesParams) => {
 	try {
@@ -273,5 +271,49 @@ export const getDashboardCourse = async (clerkId: string, courseId: string) => {
 		return { course, sections, progressPercentage }
 	} catch (error) {
 		throw new Error('Something went wrong while getting dashboard course!')
+	}
+}
+
+export const addFavoriteCourse = async (courseId: string, clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const isFavourite = await User.findOne({
+			clerkId,
+			favouriteCourses: courseId,
+		})
+
+		if (isFavourite) {
+			throw new Error('Course already added to favorite')
+		}
+
+		const user = await User.findOne({ clerkId })
+
+		await User.findByIdAndUpdate(user._id, {
+			$push: { favouriteCourses: courseId },
+		})
+	} catch (error) {
+		throw new Error('Something went wrong while adding favorite course!')
+	}
+}
+
+export const addArchiveCourse = async (courseId: string, clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const isArchive = await User.findOne({
+			clerkId,
+			archiveCourses: courseId,
+		})
+
+		if (isArchive) {
+			throw new Error('Course already added to archive')
+		}
+
+		const user = await User.findOne({ clerkId })
+
+		await User.findByIdAndUpdate(user._id, {
+			$push: { archiveCourses: courseId },
+		})
+	} catch (error) {
+		throw new Error('Something went wrong while adding favorite course!')
 	}
 }
