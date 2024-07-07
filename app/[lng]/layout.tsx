@@ -44,7 +44,7 @@ export default function RootLayout({ children, params: { lng } }: Props) {
 		<ClerkProvider localization={local}>
 			<html lang={lng} dir={dir(lng)} suppressHydrationWarning>
 				<body
-					className={`${roboto.variable} ${spaceGrotesk.variable}`}
+					className={`${roboto.variable} ${spaceGrotesk.variable} custom-scrollbar overflow-x-hidden`}
 					suppressHydrationWarning
 				>
 					<ThemeProvider
