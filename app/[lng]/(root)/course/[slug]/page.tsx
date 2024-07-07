@@ -13,7 +13,7 @@ import { translation } from '@/i18n/server'
 import Hero from './_components/hero'
 import Overview from './_components/overview'
 import Description from './_components/description'
-import { getDetailedCourse, getFeaturedCourse } from '@/actions/course.action'
+import { getDetailedCourse, getFeaturedCourses } from '@/actions/course.action'
 import { ICourse } from '@/app.types'
 
 interface Props {
@@ -27,7 +27,7 @@ async function Page({ params: { lng, slug } }: Props) {
 	const { t } = await translation(lng)
 
 	const courseJSON = await getDetailedCourse(slug)
-	const coursesJSON = await getFeaturedCourse()
+	const coursesJSON = await getFeaturedCourses()
 
 	const course = JSON.parse(JSON.stringify(courseJSON))
 	const courses = JSON.parse(JSON.stringify(coursesJSON))
