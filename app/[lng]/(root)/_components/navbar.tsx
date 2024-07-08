@@ -90,12 +90,12 @@ function Navbar() {
 								Sign Up
 							</Button>
 						</SignUpButton>
+						<SignInButton mode='modal'>
+							<Button size={'icon'} variant={'ghost'} className='md:hidden'>
+								<LogIn />
+							</Button>
+						</SignInButton>
 					</SignedOut>
-					<SignInButton mode='modal'>
-						<Button size={'icon'} variant={'ghost'} className='md:hidden'>
-							<LogIn />
-						</Button>
-					</SignInButton>
 				</div>
 			</div>
 		</div>
