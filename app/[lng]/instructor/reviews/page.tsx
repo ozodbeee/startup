@@ -1,5 +1,5 @@
 import { Separator } from '@/components/ui/separator'
-import Header from '../_components/header'
+import Header from '../../../../components/shared/header'
 import InstructorReviewCard from '@/components/cards/instructor-review.card'
 import { auth } from '@clerk/nextjs/server'
 import { SearchParamsProps } from '@/app.types'

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../../_components/header'
+import Header from '../../../../../../components/shared/header'
 import { Separator } from '@/components/ui/separator'
 import { getSectionById } from '@/actions/section.action'
 import Link from 'next/link'
