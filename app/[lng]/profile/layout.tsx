@@ -1,13 +1,15 @@
 import { ChildProps } from '@/types'
 import React from 'react'
-import Sidebar from './_components/sidebar'
+import Navbar from '../../../components/shared/navbar'
+import Sidebar from '../../../components/shared/sidebar'
 
 function Layout({ children }: ChildProps) {
 	return (
 		<>
-			<Sidebar />
-			<main className='w-full p-4 pr-[420px] max-md:pr-24'>
-				<div className='size-full rounded-md bg-gradient-to-b from-background to-secondary px-4 pb-4'>
+			<Navbar isProfile />
+			<Sidebar page='admin' />
+			<main className='w-full p-4 pl-[320px] pt-[12vh]'>
+				<div className='size-full rounded-md bg-secondary px-4 pb-4'>
 					{children}
 				</div>
 			</main>

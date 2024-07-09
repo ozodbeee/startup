@@ -1,4 +1,5 @@
 import {
+	Bell,
 	Contact,
 	CreditCard,
 	FileCode,
@@ -8,6 +9,7 @@ import {
 	MessageSquareMore,
 	MonitorPlay,
 	Settings2,
+	User,
 } from 'lucide-react'
 import {
 	DiCisco,
@@ -288,4 +290,12 @@ export const profileNavLinks = [
 	{ label: 'creditCards', route: '/profile/credit-cards', icon: CreditCard },
 	{ label: 'reviews', route: '/profile/reviews', icon: MessageSquareMore },
 	{ label: 'settings', route: '/profile/settings', icon: Settings2 },
+]
+
+export const adminNavLinks = [
+	{ label: 'Dashboard', route: '/admin', icon: GaugeCircle },
+	{ label: 'All courses', route: '/admin/all-courses', icon: MonitorPlay },
+	{ label: 'Instructors', route: '/admin/instructors', icon: User },
+	{ label: 'Reviews', route: '/admin/reviews', icon: MessageSquareMore },
+	{ label: 'Notifications', route: '/admin/notifications', icon: Bell },
 ]

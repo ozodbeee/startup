@@ -17,9 +17,9 @@ import { FaCheck, FaTimes } from 'react-icons/fa'
 interface Props {
 	review: IReview
 	isProfile?: boolean
+	isAdmin?: boolean
 }
-
-function InstructorReviewCard({ review, isProfile }: Props) {
+function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
 	const [isLoading, setIsLoading] = useState(false)
 	const pathname = usePathname()
 
@@ -37,7 +37,12 @@ function InstructorReviewCard({ review, isProfile }: Props) {
 	}
 
 	return (
-		<div className='relative flex gap-4 border-b pb-4'>
+		<div
+			className={cn(
+				'relative flex gap-4 border-b pb-4',
+				isAdmin && 'bg-background p-2 rounded-md'
+			)}
+		>
 			{isLoading && <FillLoading />}
 			<div className='flex-1'>
 				<div className='flex gap-3'>
@@ -49,7 +54,7 @@ function InstructorReviewCard({ review, isProfile }: Props) {
 					</Avatar>
 
 					<div className='flex flex-col'>
-						<div className='font-SpaceGrotesk text-sm'>
+						<div className=' font-SpaceGrotesk text-sm'>
 							{review.user.fullName}{' '}
 							<span className='text-xs text-muted-foreground'>
 								{formatDistanceToNow(new Date(review.createdAt))} ago
