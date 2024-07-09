@@ -1,4 +1,3 @@
-import { getCoursesById } from '@/actions/course.action'
 import React from 'react'
 import Header from '../../../../../components/shared/header'
 import Actions from './_components/actions'
@@ -12,9 +11,10 @@ import Sections from './_components/sections'
 import Price from './_components/price'
 import PreviewImage from './_components/preview-image'
 import { getSections } from '@/actions/section.action'
+import { getCourseById } from '@/actions/course.action'
 
 async function Page({ params }: { params: { courseId: string } }) {
-	const courseJSON = await getCoursesById(params.courseId)
+	const courseJSON = await getCourseById(params.courseId)
 	const sectionsJSON = await getSections(params.courseId)
 
 	const course = JSON.parse(JSON.stringify(courseJSON))
