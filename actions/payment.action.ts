@@ -25,9 +25,8 @@ export const payment = async (
 
 		return paymentIntent.client_secret
 	} catch (error) {
-		console.log(error)
-
-		throw new Error("Couldn't process payment")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
 
@@ -38,6 +37,18 @@ export const retrievePayment = async (pi: string) => {
 		})
 	} catch (error) {
 		console.error('Error retrieving payment:', error)
-		throw new Error("Couldn't retrieve payment")
+		const result = error as Error
+		throw new Error(result.message)
+	}
+}
+
+export const applyCoupon = async (code: string) => {
+	try {
+		const coupon = await stripe.coupons.retrieve(code)
+
+		return JSON.parse(JSON.stringify(coupon))
+	} catch (error) {
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }

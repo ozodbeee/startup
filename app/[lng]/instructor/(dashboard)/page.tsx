@@ -9,7 +9,6 @@ import { getCourses } from '@/actions/course.action'
 import InstructorCourseCard from '@/components/cards/instructor-course.card'
 import { formatAndDivideNumber } from '@/lib/utils'
 import { getReviews } from '@/actions/review.action'
-import { IReview } from '@/app.types'
 
 async function Page() {
 	const { userId } = auth()

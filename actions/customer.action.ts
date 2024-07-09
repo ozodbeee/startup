@@ -43,7 +43,8 @@ export const getCustomer = async (clerkId: string) => {
 		return await stripe.customers.retrieve(customerId)
 	} catch (error) {
 		console.error('Error getting customer details:', error)
-		throw new Error("Couldn't get customer details")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
 
@@ -57,7 +58,8 @@ export const atachPayment = async (
 		return await stripe.paymentMethods.attach(paymentMethod, { customer })
 	} catch (error) {
 		console.error('Error attaching payment method:', error)
-		throw new Error("Couldn't attach payment method")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
 
@@ -69,7 +71,8 @@ export const detachPaymentMethod = async (
 		await stripe.paymentMethods.detach(paymentMethod)
 		revalidatePath(path)
 	} catch (error) {
-		throw new Error("Couldn't detach payment method")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
 
@@ -86,7 +89,8 @@ export const getCustomerCards = async (clerkId: string) => {
 
 		return paymentMethods.data
 	} catch (error) {
-		throw new Error("Couldn't retrieve cards")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
 
@@ -102,6 +106,7 @@ export const getPaymentIntents = async (clerkId: string) => {
 
 		return payments.data
 	} catch (error) {
-		throw new Error("Couldn't get charges")
+		const result = error as Error
+		throw new Error(result.message)
 	}
 }
