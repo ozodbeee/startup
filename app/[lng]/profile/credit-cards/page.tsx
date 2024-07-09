@@ -41,7 +41,7 @@ async function Page({ params }: LngParams) {
 					<AddPaymentMethod />
 				</div>
 
-				<div className='col-span-2 mt-4 flex flex-col space-y-2 p-4'>
+				<div className='col-span-2 mt-4 flex flex-col space-y-2 bg-gray-900 p-4'>
 					<Table>
 						<TableHeader>
 							<TableRow className='bg-secondary'>
