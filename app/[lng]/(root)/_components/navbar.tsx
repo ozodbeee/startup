@@ -8,7 +8,7 @@ import Link from 'next/link'
 import LanguageDropdown from '@/components/shared/language-dropdown'
 import Logo from '@/components/shared/logo'
 import GlobalSearch from './global-search'
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import UserBox from '@/components/shared/user-box'
 import useTranslate from '@/hooks/use-translate'
 import Mobile from './mobile'
@@ -56,8 +56,9 @@ function Navbar() {
 								variant={cartsLength() ? 'secondary' : 'ghost'}
 								asChild
 								className='relative'
+								aria-label='shoppin-cart'
 							>
-								<Link href={'/shopping/cart'}>
+								<Link href={'/shopping/cart'} aria-label='shopping-cart'>
 									<ShoppingCart />
 									{cartsLength() ? (
 										<div className='absolute -right-2 -top-2 flex size-6 items-center justify-center rounded-full bg-destructive'>
@@ -77,21 +78,11 @@ function Navbar() {
 
 					<SignedOut>
 						<SignInButton mode='modal'>
-							<Button
-								variant={'ghost'}
-								size={'lg'}
-								rounded={'full'}
-								className='hidden md:flex'
-							>
-								Log in
+							<Button size={'lg'} className='hidden md:flex'>
+								{t('logIn')}
 							</Button>
 						</SignInButton>
 
-						<SignUpButton mode='modal'>
-							<Button size={'lg'} rounded={'full'} className='hidden md:flex'>
-								Sign Up
-							</Button>
-						</SignUpButton>
 						<SignInButton mode='modal'>
 							<Button size={'icon'} variant={'ghost'} className='md:hidden'>
 								<LogIn />

@@ -23,11 +23,26 @@ const spaceGrotesk = SpaceGrotesk({
 })
 
 export const metadata: Metadata = {
-	title: 'Startup - Project',
-	description: 'Startup next-js project',
-	icons: {
-		icon: '/logo.svg',
+	metadataBase: new URL('https://startup.ozod.ac'),
+	title: 'Ozod praktikum | Dasturlash kurslari',
+	description:
+		"Ozod Praktikum Next.js dasturlash kurslari, amaliyotlar, startup loyihalar va asosiysi sifatli ta'limdir.",
+	authors: [{ name: 'Ozodbek Muhtorjonov', url: 'https://startup.ozod.ac' }],
+	icons: { icon: '/logo.svg' },
+	openGraph: {
+		title: 'Ozod praktikum | Dasturlash kurslari',
+		description:
+			"Ozod Praktikum Next.js dasturlash kurslari, amaliyotlar, startup loyihalar va asosiysi sifatli ta'limdir.",
+		type: 'website',
+		url: 'https://startup.ozod.ac',
+		locale: 'uz_UZ',
+		images: 'https://ibb.co/QQ9KBkr',
+		countryName: 'Uzbekistan',
+		siteName: 'Ozod',
+		emails: 'muhtorjonovozodbek1@gmail.com',
 	},
+	keywords:
+		"Praktikum, Praktikum sammi, NextJS, NextJS to'liq kurs, NextJS kurs, NextJS dasturlash, Startup, Startup loyiha, Startup ozod, Ozod, Ozod praktikum, Ozod dasturlash, Ozod startup, Ozod kurs, Ozod kurslari, Ozod dasturlash kurslari, Ozod startup kurslari, Ozod startup loyihalari, Ozod startup loyiha, Ozod startup loyihasi, Ozod startup loyihasi dasturlash",
 }
 
 export async function generateStaticParams() {
