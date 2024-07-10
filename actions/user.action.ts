@@ -51,6 +51,18 @@ export const getUserById = async (clerkId: string) => {
 		throw new Error('Error fetching user. Please try again.')
 	}
 }
+export const getUser = async (clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const user = await User.findOne({ clerkId }).select(
+			'fullName picture clerkId email role isAdmin'
+		)
+
+		return JSON.parse(JSON.stringify(user))
+	} catch (error) {
+		throw new Error('Error fetching user. Please try again.')
+	}
+}
 
 export const getUserReviews = async (clerkId: string) => {
 	try {
@@ -97,5 +109,15 @@ export const getInstructors = async () => {
 		)
 	} catch (error) {
 		throw new Error('Error getting instructors')
+	}
+}
+
+export const getRole = async (clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const user = await User.findOne({ clerkId }).select('role isAdmin')
+		return user
+	} catch (error) {
+		throw new Error('Error getting role')
 	}
 }
