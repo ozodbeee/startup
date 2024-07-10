@@ -15,6 +15,7 @@ import Mobile from './mobile'
 import { cn } from '@/lib/utils'
 import { useParams, usePathname } from 'next/navigation'
 import { useCart } from '@/hooks/use-cart'
+import Notification from '@/components/shared/notification'
 
 function Navbar() {
 	const t = useTranslate()
@@ -49,6 +50,7 @@ function Navbar() {
 						<div className='hidden gap-1 md:flex'>
 							<GlobalSearch />
 							<LanguageDropdown />
+							<Notification />
 							<Button
 								size={'icon'}
 								variant={cartsLength() ? 'secondary' : 'ghost'}
