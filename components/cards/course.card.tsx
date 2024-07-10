@@ -18,15 +18,15 @@ function CourseCard(course: ICourse) {
 					<Separator />
 					<div className='flex items-center justify-between'>
 						<div className='flex items-center gap-2'>
-							<div className='relative size-[40px]'>
+							{/* <div className='relative size-[40px]'>
 								<CustomImage
 									src={course.instructor.picture}
 									alt={course.instructor.fullName}
 									className='rounded-full '
 								/>
-							</div>
+							</div> */}
 							<p className='text-sm text-muted-foreground'>
-								{course.instructor.fullName}
+								{/* {course.instructor.fullName} */}
 							</p>
 						</div>
 
