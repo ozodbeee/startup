@@ -9,7 +9,11 @@ function CourseCard(course: ICourse) {
 		<Link href={`/course/${course._id}`}>
 			<Card className='group w-full'>
 				<CardContent className='relative h-56 w-full'>
-					<CustomImage src={course.previewImage} alt={course.title} />
+					<CustomImage
+						src={course.previewImage}
+						alt={course.title}
+						className='rounded-t-md'
+					/>
 				</CardContent>
 				<div className='my-4 flex flex-col space-y-2 px-2'>
 					<h2 className='line-clamp-1 font-SpaceGrotesk text-2xl font-bold'>
@@ -18,15 +22,15 @@ function CourseCard(course: ICourse) {
 					<Separator />
 					<div className='flex items-center justify-between'>
 						<div className='flex items-center gap-2'>
-							{/* <div className='relative size-[40px]'>
+							<div className='relative size-[40px]'>
 								<CustomImage
 									src={course.instructor.picture}
 									alt={course.instructor.fullName}
 									className='rounded-full '
 								/>
-							</div> */}
+							</div>
 							<p className='text-sm text-muted-foreground'>
-								{/* {course.instructor.fullName} */}
+								{course.instructor.fullName}
 							</p>
 						</div>
 

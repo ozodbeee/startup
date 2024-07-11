@@ -60,7 +60,7 @@ function InstructorReviewCard({ review, isProfile, isAdmin }: Props) {
 
 					<div className='flex flex-col'>
 						<div className=' font-SpaceGrotesk text-sm'>
-							{review.user.fullName}{' '}
+							{/* {review.user.fullName}{' '} */}
 							<span className='text-xs text-muted-foreground'>
 								{formatDistanceToNow(new Date(review.createdAt))} ago
 							</span>

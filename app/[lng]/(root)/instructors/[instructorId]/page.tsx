@@ -54,12 +54,15 @@ async function Page({ params, searchParams }: Props) {
 						width='155'
 						height='155'
 						className='rounded-md max-md:self-start'
+						style={{ objectFit: 'cover', backgroundPosition: 'center' }}
 					/>
 					<div className='flex flex-1 flex-col space-y-2'>
 						<h2 className='font-SpaceGrotesk text-3xl font-bold'>
 							{user.fullName}
 						</h2>
-						<p className='line-clamp-2 text-muted-foreground'>{user.bio}</p>
+						<p className='line-clamp-2 font-SpaceGrotesk text-muted-foreground'>
+							{user.bio}
+						</p>
 						<div className='flex items-center gap-4'>
 							<div className='flex items-center gap-1'>
 								<PiStudentBold />

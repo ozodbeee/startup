@@ -35,7 +35,7 @@ function UserBox() {
 					<div className='flex items-center gap-x-2'>
 						<div className='rounded-md bg-secondary p-1'>
 							<Avatar className='size-8'>
-								<AvatarImage src={user?.picture} />
+								<AvatarImage src={user?.picture} className='object-cover' />
 							</Avatar>
 						</div>
 

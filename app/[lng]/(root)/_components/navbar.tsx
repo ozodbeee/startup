@@ -34,7 +34,7 @@ function Navbar() {
 								href={`/${nav.route}`}
 								key={nav.route}
 								className={cn(
-									'font-medium transition-all hover:text-blue-500 hover:underline',
+									'font-semibold font-SpaceGrotesk transition-all hover:text-blue-500',
 									(nav.route === '' ? `${pathname}/` : pathname) ===
 										`/${lng}/${nav.route}` && 'text-blue-500'
 								)}
